@@ -10,9 +10,9 @@ public class SearchResultConfig {
 
     @Bean
     CommandLineRunner commandLineRunner(
-            SearchResultRepository resultRepository){
+            SearchResultRepository repository){
         return args -> {
-            resultRepository.saveAll(resultScraper.searchResults());
+            repository.saveAll(resultScraper.searchResults());
         };
     }
 

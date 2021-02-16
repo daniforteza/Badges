@@ -1,21 +1,14 @@
 package com.fbmoll.ad.demo;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table
-public class SearchResult {
+public class SearchResult implements Serializable {
     @Id
-    @SequenceGenerator(
-            name = "search_result",
-            sequenceName = "search_result",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "search_result"
-    )
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Integer id;
     public String url;
     public String title;
@@ -40,28 +33,31 @@ public class SearchResult {
         return title;
     }
 
-    public SearchResult(){
+    public SearchResult() {
     }
 
-    public SearchResult(String url,String title){
-        this.url=url;
-        this.title=title;
+    public SearchResult(String url, String title) {
+        this.url = url;
+        this.title = title;
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         SearchResult that = (SearchResult) o;
 
-        if (!Objects.equals(title, that.title)) return  false;
+        if (!Objects.equals(title, that.title)) return false;
         return Objects.equals(url, that.url);
     }
+
     @Override
     public int hashCode() {
-        int result= title!= null ? title.hashCode():0;
-        result = 31 * result + (url !=null ? url.hashCode():0);
+        int result = title != null ? title.hashCode() : 0;
+        result = 31 * result + (url != null ? url.hashCode() : 0);
         return result;
     }
+
     @Override
     public String toString() {
         return "SearchResult{" +
