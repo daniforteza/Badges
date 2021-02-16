@@ -2,11 +2,13 @@ package com.fbmoll.ad.demo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
-public class SearchService {
+public  class SearchService {
 
     private final SearchResultRepository searchResultRepository;
 
@@ -14,6 +16,7 @@ public class SearchService {
     public SearchService(SearchResultRepository searchResultRepository){
         this.searchResultRepository = searchResultRepository;
     }
+
 
     public List<SearchResult> getResults(){
         return searchResultRepository.findAll();
@@ -27,4 +30,27 @@ public class SearchService {
     }
     searchResultRepository.save(result);
     }
+
+
+    public void deleteResult(Integer resultId) {
+               boolean exists = searchResultRepository.existsById(resultId);
+               if (!exists){
+                   throw new IllegalStateException("Result with id"+resultId+"does not exist");
+               }
+               searchResultRepository.deleteById(resultId);
+    }
+    @Transactional
+    public  void updateResult(Integer resultId, String title, String url) {
+        SearchResult searchResult = searchResultRepository.findResultById(resultId)
+                .orElseThrow(()->new IllegalStateException(
+                        "result with id"+resultId+"does not exist"));
+
+        if (title != null && title.length() > 0 && !Objects.equals(searchResult.getTitle(),title)){
+            searchResult.setTitle(title);
+        }
+        if (url != null && url.length() > 0 && !Objects.equals(searchResult.getUrl(),url)){
+            searchResult.setUrl(url);
+        }
+    }
+
 }

@@ -20,4 +20,22 @@ public class SearchResultController {
         return searchService.getResults();
     }
 
+    @PostMapping
+    public void registerNewResult(@RequestBody SearchResult result){
+        searchService.addNewResult(result);
+    }
+
+    @DeleteMapping(path = "{resultId}")
+    public void deleteResult(@PathVariable("resultId")Integer resultId){
+        searchService.deleteResult(resultId);
+    }
+
+    @PutMapping (path = "{resultId}")
+    public void updateResult(
+            @PathVariable("resultId") Integer resultId,
+            @RequestParam(required = false)String title,
+            @RequestParam(required = false)String url){
+        searchService.updateResult(resultId,title,url);
+    }
+
 }
