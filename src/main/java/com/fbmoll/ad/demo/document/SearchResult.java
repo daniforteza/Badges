@@ -37,6 +37,8 @@ public class SearchResult {
         this.title = title;
     }
 
+    public SearchResult() {
+    }
 
     public SearchResult(String url, String title) {
         this.url = url;

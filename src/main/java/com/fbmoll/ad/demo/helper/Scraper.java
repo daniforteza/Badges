@@ -21,7 +21,7 @@ public class Scraper {
 
     public List<SearchResult> searchResults() throws IOException {
         List<SearchResult> resultList = new ArrayList<>();
-        final String query = "rusia";
+        final String query = "agua";
         final Document page = Jsoup.connect("https://www.google.com/search?q=" + URLEncoder.encode(query, "UTF-8")).userAgent(USER_AGENT).get();
 
 
