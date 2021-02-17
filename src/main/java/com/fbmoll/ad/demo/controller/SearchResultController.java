@@ -1,5 +1,7 @@
-package com.fbmoll.ad.demo;
+package com.fbmoll.ad.demo.controller;
 
+import com.fbmoll.ad.demo.document.SearchResult;
+import com.fbmoll.ad.demo.service.SearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

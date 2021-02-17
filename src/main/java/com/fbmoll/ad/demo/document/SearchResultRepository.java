@@ -1,7 +1,7 @@
-package com.fbmoll.ad.demo;
+package com.fbmoll.ad.demo.document;
 
 
-import org.springframework.data.jpa.repository.Query;
+import com.fbmoll.ad.demo.document.SearchResult;
 import org.springframework.stereotype.Repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -1,4 +1,4 @@
-package com.fbmoll.ad.demo;
+package com.fbmoll.ad.demo.document;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -6,7 +6,7 @@ import java.util.Objects;
 
 @Entity
 @Table
-public class SearchResult implements Serializable {
+public class SearchResult {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Integer id;
@@ -37,8 +37,6 @@ public class SearchResult implements Serializable {
         this.title = title;
     }
 
-    public SearchResult() {
-    }
 
     public SearchResult(String url, String title) {
         this.url = url;

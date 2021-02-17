@@ -1,4 +1,6 @@
-package com.fbmoll.ad.demo;
+package com.fbmoll.ad.demo.service;
+import com.fbmoll.ad.demo.document.SearchResult;
+import com.fbmoll.ad.demo.document.SearchResultRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

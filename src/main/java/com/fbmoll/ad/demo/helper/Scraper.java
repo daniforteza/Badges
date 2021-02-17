@@ -1,12 +1,13 @@
-package com.fbmoll.ad.demo;
+package com.fbmoll.ad.demo.helper;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fbmoll.ad.demo.document.SearchResult;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
-import javax.lang.model.util.Elements;
+import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,5 +32,7 @@ public class Scraper {
             resultList.add(new SearchResult(url,title));
         }
         return resultList;
+
     }
+
 }
